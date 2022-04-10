@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: head">
+</head>
+<body>
+<div th:include="layout :: navigationPanel"></div>
+
+<main class="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-900 text-white">
+    <!-- component -->
+    <section class="flex w-[30rem] flex-col space-y-10">
+
+        <h1 class="text-4xl font-bold" >Logowanie do systemu</h1>
+        <form th:action="@{/login}" method="POST" class="bg-white text-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <label class="block text-black text-sm font-bold mb-2" for="login">
+                    Login
+                </label>
+                <input type="text" name="login" id="login" placeholder="Login" class="shadow appearance-none border rounded w-full py-2 px-3 text-black"/>
+            </div>
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <label class="block text-black text-sm font-bold mb-2" for="passwd">
+                    Hasło
+                </label>
+                <input type="password" name="passwd" id="passwd" placeholder="Hasło" class="shadow appearance-none border rounded w-full py-2 px-3 text-black"/>
+            </div>
+
+
+
+            <div class="w-full mt-6 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <button type="submit" class="w-full bg-blue-700 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">Zaloguj się</button>
+            </div>
+        </form>
+
+    </section>
+</main>
+
+<div th:include="layout :: footer"></div>
+</body>
+</html>
+

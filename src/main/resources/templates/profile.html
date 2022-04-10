@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: head">
+</head>
+<body>
+<div th:include="layout :: navigationPanel"></div>
+
+<main class="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-900 text-white">
+    <!-- component -->
+    <section class="flex w-[30rem] flex-col space-y-10">
+
+        <h1 th:text="'Witaj ' +${user.name} + ' ' + ${user.surname}"></h1>
+
+    </section>
+</main>
+
+<div th:include="layout :: footer"></div>
+
+</body>
+</html>

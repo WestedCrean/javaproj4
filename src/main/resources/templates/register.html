@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+<head th:include="layout :: head">
+</head>
+<body>
+<div th:include="layout :: navigationPanel"></div>
+
+<main class="mx-auto flex min-h-screen w-full items-center justify-center bg-gray-900 text-white">
+    <!-- component -->
+    <section class="flex w-[30rem] flex-col space-y-10">
+
+        <h1 class="text-4xl font-bold" >Rejestracja</h1>
+        <form th:action="@{/register}" method="POST" th:object="${user}" class="bg-white text-black shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <label class="block text-black text-sm font-bold mb-2" for="name">
+                    Imię
+                </label>
+                <input type="text" th:field="*{name}"  id="name" placeholder="Imię" class="shadow appearance-none border rounded w-full py-2 px-3 text-black"/>
+            </div>
+
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <label class="block text-black text-sm font-bold mb-2" for="surname">
+                    Nazwisko
+                </label>
+                <input type="text" th:field="*{surname}"  id="surname" placeholder="Nazwisko" class="shadow appearance-none border rounded w-full py-2 px-3 text-black"/>
+            </div>
+
+
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <label class="block text-black text-sm font-bold mb-2" for="login">
+                    Login
+                </label>
+                <span th:if="${#fields.hasErrors('login')}" th:errorClass="text-red" class="block text-black text-sm font-bold mb-2"  th:errors="*{login}">
+                    Login jest juz w uzyciu
+                </span>
+                <input type="text" th:field="*{login}"  id="login" placeholder="Login" th:errorClass="border-red" class="shadow appearance-none border rounded w-full py-2 px-3 text-black"/>
+            </div>
+            <div class="w-full transform border-b-2 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <label class="block text-black text-sm font-bold mb-2" for="password">
+                    Hasło
+                </label>
+                <input type="password" th:field="*{password}" id="password" placeholder="Hasło" class="shadow appearance-none border rounded w-full py-2 px-3 text-black"/>
+            </div>
+
+            <div class="w-full mt-6 bg-transparent text-lg duration-300 focus-within:border-indigo-500">
+                <button type="submit" class="w-full bg-blue-700 hover:bg-blue-400 text-white font-bold py-2 px-4 rounded">Zarejestruj się</button>
+            </div>
+
+
+        </form>
+
+    </section>
+</main>
+
+<div th:include="layout :: footer"></div>
+</body>
+</html>
+

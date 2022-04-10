@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang= "pl" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Spring application - Wiktor Flis</title>
+    <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#da373d',
+          }
+        }
+      }
+    }
+  </script>
+
+</head>
+<body>
+
+
+
+<div th:fragment="navigationPanel" >
+    <ul class="bg-blue-900 text-white flex">
+        <li sec:authorize="!isAuthenticated()" class="font-bold rounded m-5">
+            <a th:href="@{/register}">Zarejestruj się</a></li>
+        <li sec:authorize="isAuthenticated()" class="font-bold rounded m-5">
+            <a th:href="@{/profile}">Wyświetl swoje konto</a></li>
+        <li sec:authorize="isAuthenticated()" class="font-bold rounded m-5">
+            <a th:href="@{/edit}">Edytuj swoje konto</a></li>
+        <li sec:authorize="isAuthenticated()" class="font-bold rounded m-5">
+            <a th:href="@{/delete}">Usuń swoje konto</a></li>
+        <li sec:authorize="isAuthenticated()" class="font-bold rounded m-5">
+            <a th:href="@{/users}">Wyświetl użytkowników</a></li>
+        <li sec:authorize="!isAuthenticated()" class="font-bold rounded m-5">
+            <a th:href="@{/login}">Zaloguj się</a></li>
+        <li sec:authorize="isAuthenticated()" class="font-bold rounded m-5">
+            <a th:href="@{/logout}">Wyloguj się</a>
+        </li>
+    </ul>
+</div>
+
+
+<div th:fragment="footer">
+    <footer class="bg-blue-900 text-white p-5">
+        <p>Politechnika Lubelska, wprowadzenie do Spring Boot - Wiktor Flis</p>
+    </footer>
+</div>
+</body>
+</html>
