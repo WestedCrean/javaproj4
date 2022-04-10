@@ -38,10 +38,16 @@ public class UserController {
     }
 
     @PostMapping("/register")
-    public String registerPagePOST(@Valid User user, BindingResult binding) {
+    public String registerPagePOST(@ModelAttribute(value = "user") @Valid User user, BindingResult binding) {
         if (binding.hasErrors()) {
             return "register"; // powrót do formularza
         }
+        // make sure user login is unique else return error
+        if (dao.findByLogin(user.getLogin()) != null) {
+            binding.rejectValue("login", "error.user", "Login musi być unikalny");
+            return "register";
+        }
+
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         dao.save(user);
         // przekierowanie do adresu url: /login
